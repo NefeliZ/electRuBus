@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+	<head>
+		<title> {{ title }} </title>
+		<link rel="icon" type="image/png" href="https://www.raspberrypi.org/app/themes/mind-control/images/favicon.png" />
+
+        <!-- import plugin script -->
+        <script src='static/Chart.min.js'></script>
+ 
+
+        <style>
+            table.table1 {
+                font-family: arial;
+                border-collapse: collapse;
+                width: 40%;}
+            table.table1 td {
+                border: 1px solid #000000;
+                text-align: left;
+                color:#000000;
+                padding: 9px;}
+            
+           table.table1 th {
+                border: 1px solid #000000;
+                text-align: left;
+                color:#000000;                
+                padding: 9px;}
+            
+            table.table1 tr {background-color: #999999;}
+
+            table.table2 {
+                font-family: arial;
+                border-collapse: collapse;
+                width: 45%;
+                top: 68px;
+                left: 600px;}
+
+            table.table2 td {
+                border: 1px solid #000000;
+                text-align: left;
+                color:#000000;
+                padding: 2px;}
+
+            table.table2 th {
+                border: 10px solid #000000;
+                text-align: center;
+                padding: 1px;}
+            
+            table.table2 tr {background-color: #999999;}
+
+            input.Menu {
+				width: 130px;
+				padding: 7px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 90%;
+				background: #B0C4DE;
+				color: #0000ff;
+				border: 1px  #B0C4DE;
+				border-radius: 2px;}
+
+			input.Menu:hover {
+				color: #B0C4DE;
+				background:#0000ff;
+				border: 1px solid #B0C4DE;} 
+
+            .demo-item {
+                position: fixed;
+                top: 0px;
+                left: 85%;}
+
+            
+            div.FirstCol{width:220px;}
+			div.SecondCol{width:140px;}
+        </style>
+        </script>
+	</head>
+
+    
+
+	<body style="color:#000000;font-family:arial;" bgcolor = #B0C4DE >
+		<input class ="Menu"
+			type="button" 
+			value="🡸 Back to Menu" 
+			onclick="window.location.href='/' "/> 
+            
+            <div class='demo-item'>
+                <h3 align="right">🍓electRuBus</h3>
+                </div>
+
+        <p style= "font-size:32px; color:#000000" align="left" > <b>👀Watch Me Mode👀</b></p>
+        
+
+        <input class ="Menu"
+			type="button" 
+			value="🡸 previous" 
+			onclick="window.location.href='/WatchMe?key={{key+1}}' " />
+
+        <input class ="Menu"
+			type="button" 
+			value="next 🡺" 
+			onclick="window.location.href='/WatchMe?key={{key-1}}' " />
+ 
+
+        <h1></h1>
+<!-- bar chart canvas element -->
+<canvas id="chart" width="600" height="400"></canvas>
+ 
+<p style= "font-size:18px; color:#000000" align="left">{{time}}</p>
+
+<script>
+ 
+   // bar chart data
+   var barData = {
+   labels : [{% for item in labels %}
+                  "{{item}}",
+              {% endfor %}],
+   datasets : [
+      {
+            fillColor: "#999999",
+            strokeColor: "#0000ff",
+            pointColor: "#0000ff",
+            pointStrokeColor: "#0000ff",
+            pointHighlightFill: "#000000",
+            pointHighlightStroke: "#000000",
+            bezierCurve : true,
+            data : [{% for item in values %}
+                      {{item}},
+                    {% endfor %}]
+      }]
+   }
+ 
+    Chart.defaults.global.animationSteps = 50;
+    Chart.defaults.global.tooltipYPadding = 16;
+    Chart.defaults.global.tooltipCornerRadius = 0;
+    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+    Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+    Chart.defaults.global.animationEasing = "easeOutBounce";
+    Chart.defaults.global.responsive = false;
+    Chart.defaults.global.scaleLineColor = "black";
+    Chart.defaults.global.scaleFontSize = 16;
+ 
+   // get bar chart canvas
+   var mychart = document.getElementById("chart").getContext("2d");
+ 
+   steps = 12
+   max = 60
+   // draw bar chart
+   var LineChartDemo = new Chart(mychart).Bar(barData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0,
+        scaleShowVerticalLines: true,
+        scaleShowGridLines : true,
+        barShowStroke : true,
+        scaleShowLabels: true,
+        bezierCurve: false,
+ 
+   });
+</script>
+<br> <br> <br> <br>
+<h3> Details:</h3>
+<table class="table2"> 
+            <tr>
+            <td>
+            <div  class = "FirstCol" align ="left">
+            <h3> Wasted hours</h3></td></div>
+            <td><div class="SecondCol" align ="center">{{ sec/60 }}</div></td>
+            </tr> 
+            <td>
+            <div  class = "FirstCol" align ="left">
+            <h3> Wasted seconds</h3></td> </div>
+            <td><div class="SecondCol" align ="center"> {{ sec }}</div></td>
+            <tr>
+            <td><div  class = "FirstCol" align ="left">
+            <h3> Wasted electricity(kw/h)</h3></td></div>
+            <td><div class="SecondCol" align ="center">{{ kwh }}</div></td>
+            </tr>   
+            <tr>
+            <td><div  class = "FirstCol" align ="left">
+            <h3> Cost of wasted electricity</h3></td></div>
+            <td><div class="SecondCol" align ="center">{{ kwhC }}</div></td>
+            </tr>   
+            <tr>
+            <td><div  class = "FirstCol" align ="left">
+            <h3> Total Seconds</h3></td></div>
+            <td><div class="SecondCol" align ="center">{{ total_secs }}</div></td>
+            </tr>
+            
+            <tr>
+            <td><div  class = "FirstCol" align ="left">
+            <h3> Total Cost</h3></td></div>
+            <td><div class="SecondCol" align ="center">{{ total_cost }}</div></td>
+            </tr>
+        </table>
+<br> <br> 
+        <h3>Timeline of Actions:</h3>
+
+        <input class ="Menu"
+			type="button" 
+			value="🡸 previous" 
+			onclick="window.location.href='/WatchMe?key={{key+1}}' " />
+
+        <input class ="Menu"
+			type="button" 
+			value="next 🡺" 
+			onclick="window.location.href='/WatchMe?key={{key-1}}' " />
+
+        <table class="table1">
+             <tr>
+                <th>Time</th>
+                <th>Source</th>
+                <th>State</th>
+            </tr>
+        {% for action in actions %}
+    	<tr>
+		<td>  {{ action[0] }} </td>
+
+        <td>
+            {% if action[1] == 1 %}
+                 Βutton 
+            {% else %}
+                 IR
+             {% endif %}
+        </td>
+        <td>
+            {% if action[2] == 1 %}
+                 ON 
+            {% else %}
+                 OFF
+             {% endif %} 
+         </td>
+    	</tr>
+		{% endfor %}
+        </table>
+
+        
+        <br><br><br><br>
+        
+        
+
+        <h5> The date and time on the server is: {{ time }} </h5>
+        
+	</body>
+</html>

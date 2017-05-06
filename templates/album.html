@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+	<head>
+		<title> {{ title }} </title>
+		<link rel="icon" type="image/png" href="https://www.raspberrypi.org/app/themes/mind-control/images/favicon.png" />
+	<style>
+            input.Menu {
+				width: 130px;
+				padding: 7px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 90%;
+				background: #B0C4DE;
+				color: #0000ff;
+				border: 1px  #B0C4DE;
+				border-radius: 2px;}
+
+			input.Menu:hover {
+				color: #B0C4DE;
+				background:#0000ff;
+				border: 1px solid #B0C4DE;} 
+
+			input.A {
+                width: 180px;
+                padding: 10px;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 150%;
+                background: #fff;
+                color: #0000FF;
+                border: 1px solid #cce6ff;
+                border-radius: 14px;}
+        input.A:hover {
+                color: #cce6ff;
+                background: #0000FF;
+                border: 1px solid #0000FF;
+                border-radius: 14px;}
+
+		.demo-item {
+                position: fixed;
+                top: 0px;
+                left: 80%;}
+        </style>
+	</head>
+
+
+	<body style="color:#000000;font-family:arial;" bgcolor = #B0C4DE >
+		<input class ="Menu"
+			type="button" 
+			value="🡸 Back to Menu" 
+			onclick="window.location.href='/' "/>
+
+			<div class='demo-item'>
+                <h3 align="right">🍓electRuBus</h3>
+                </div>
+
+        <p style= "font-size:32px; color:#000000" align="center" > <b>📷Photos of Intruders📷</b></p>
+		
+		<br><br>
+		<h2> See the rest of the photos</h2>
+		<input class ="A"
+                type="button" 
+                value="Album 2" 
+                onclick="window.location.href='/Album2' " />
+		<br><br><br>
+		<br><br><br>
+				
+		<h2>Most recent intruder photos:</h2>
+
+		{% for photo in photos %}
+    	<tr>
+		
+        <td><img width="400" align="center" src="{{url_for('static', filename=photo[3]) }}" /></td>
+		<td></br>  {{ photo[0] }} </td>
+		</br></br>
+    	</tr>
+		{% endfor %}
+
+		<br><br><br>
+
+		
+
+		<input class ="Menu"
+			type="button" 
+			value="🡸 Back to Menu" 
+			onclick="window.location.href='/' " />
+
+		<h5> The date and time on the server is: {{ time }} </h5>
+
+
+
+	</body>
+</html>

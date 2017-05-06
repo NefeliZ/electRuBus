@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+	<head>
+		<title> {{ title }} </title>
+        <meta http-equiv="refresh" content="3">
+        <link rel="icon" type="image/png" href="https://www.raspberrypi.org/app/themes/mind-control/images/favicon.png" />
+        
+		<style>
+            input.Menu {
+				width: 130px;
+				padding: 7px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 90%;
+				background: #B0C4DE;
+				color: #0000ff;
+				border: 1px  #B0C4DE;
+				border-radius: 2px;}
+
+			input.Menu:hover {
+				color: #B0C4DE;
+				background:#0000ff;
+				border: 1px solid #B0C4DE;} 
+
+        table.table1 {
+                font-family: arial;
+                border-collapse: collapse;
+                width: 45%;}
+            table.table1 td {
+                border: 1px solid #000000;
+                text-align: left;
+                color:#000000;
+                padding: 5%;}
+            
+           table.table1 th {
+                border: 1px solid #000000;
+                text-align: left;
+                color:#000000;                
+                padding: 9px;}
+            
+            table.table1 tr {background-color: #999999;}
+
+            .demo-item {
+                position: fixed;
+                top: 0px;
+                left: 85%;}
+            
+        div.FirstCol{width:180px;}
+        div.SecondCol{width:140px;}
+        </style>
+
+	</head>
+
+
+	<body style="font-family:arial;" bgcolor =#B0C4DE>
+		<input class ="Menu"
+			type="button" 
+			value="🡸 Back to Menu" 
+			onclick="window.location.href='/' "/>
+        
+        <div class='demo-item'>
+                <h3 align="right">🍓electRuBus</h3>
+                </div>
+
+        <p style= "font-size:32px; color:#000000" align="center" > <b>🐻Save the Bear Mode🐻 </b></p>
+        <br>
+        <h2> The Infared Sensor {{ state }} detecting movement right now.</h2>
+
+        {% if state == "isn't" %}
+            <h3> The light will turn off after {{ wait }} seconds if no movement has been detected.</h3>
+        {% else %}
+            <h3>  </h3>
+        {% endif %} 
+        
+        <br><br><br><br>
+		<table class="table1" align="left">
+        {% for action in presence %}
+    	<tr>
+		<td>  {{ action[0] }} </td>
+
+        <td>
+            {% if action[1] == 1 %}
+                 Βutton 
+            {% else %}
+                 IR
+             {% endif %}
+        </td>
+        <td>
+            {% if action[2] == 1 %}
+                 ON 
+            {% else %}
+                 OFF
+             {% endif %} 
+         </td>
+    	</tr>
+		{% endfor %}
+        </table>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<h5> The date and time on the server is: {{ time }} </h5>
+
+	</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> {{ title }} </title>
+		<link rel="icon" type="image/png" href="https://www.raspberrypi.org/app/themes/mind-control/images/favicon.png" />
+		<style>
+			input.WM {
+				width: 250px;
+				padding: 10px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 150%;
+				background: #4B0082;
+				color: #FFFFFF;
+				border: 1px solid #4B0082;
+				border-radius: 14px;}
+
+			input.WM:hover {
+				color: #FFFFFF;
+				background: #4B0082;
+				border: 1px solid #fff;
+				border-radius: 14px;} 
+
+			input.SB {
+				width: 250px;
+				padding: 10px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 150%;
+				background: #191970;
+				color: #FFFFFF;
+				border: 1px solid #191970;
+				border-radius: 14px;}
+
+			input.SB:hover {
+				color: #FFFFFF;
+				background: #191970;
+				border: 1px solid #fff;
+				border-radius: 14px;} 
+
+			input.AA {
+				width: 250px;
+				padding: 10px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 150%;
+				background: #00008B;
+				color: #FFFFFF;
+				border: 1px solid #00008B;
+				border-radius: 14px;}
+
+			input.AA:hover {
+				color: #FFFFFF;
+				background: #00008B;
+				border: 1px solid #fff;
+				border-radius: 14px;} 
+
+			input.PT {
+				width: 250px;
+				padding: 10px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 150%;
+				background: #0000FF;
+				color: #FFFFFF;
+				border: 1px solid #0000FF;
+				border-radius: 14px;}
+
+			input.PT:hover {
+				color: #FFFFFF;
+				background: #0000FF;
+				border: 1px solid #fff;
+				border-radius: 14px;} 
+				
+			input.A {
+				width: 250px;
+				padding: 10px;
+				cursor: pointer;
+				font-weight: bold;
+				font-size: 150%;
+				background: #4169E1;
+				color: #FFFFFF;
+				border: 1px solid #4169E1;
+				border-radius: 14px;}
+
+			input.A:hover {
+				color: #FFFFFF;
+				background: #4169E1;
+				border: 1px solid #fff;
+				border-radius: 14px;} 
+			
+			div.FirstCol{width:300px;}
+			div.SecondCol{width:400px;}
+					
+
+		</style>  	
+
+	</head>
+	<body style="font-family:verdana;" bgcolor= #B0C4DE >
+		<h1 align="center">🍓electRuBus - Modes of Operation<br> </h1>
+		
+	<form>
+	<table>
+	<tr>
+		<td>
+			<div class = "FirstCol" align ="center">
+				<input class ="WM"
+					type="button" 
+					value="Watch Me" 
+					onclick="window.location.href='/WatchMe' " />
+			</div>			
+		</td>
+	<td>
+	<div class = "SecondCol">
+	<h3> Record of electric consumption<br>Record of user's actions</h3>
+	</div>
+	</td>	
+	</tr>
+
+	<tr>
+		<td>
+			<div class = "FirstCol" align ="center" >
+				<input class ="SB"
+						type="button" 
+						value="Save the Bear" 
+						onclick="window.location.href='/SavetheBear' "/>
+			</div>
+		</td>
+		<td>
+		<div class = "SecondCol">
+		<h3> Optimization of electric consumption according to presence</h3>
+		</div>
+	</td>	
+	</tr>
+	<tr>
+		<td>
+			<div class = "FirstCol" align ="center">
+				<input class ="AA"
+						type="button" 
+						value="Always Around" 
+						onclick="window.location.href='/AlwaysAroundOn' " />
+			</div>
+		</td>
+		<td>
+		<div class = "SecondCol">
+		<h3>Remote control of the electric outlet</h3>
+		</div>
+	</td>	
+	</tr>
+	<tr>
+		<td>
+			<div class = "FirstCol" align ="center">
+				<input class ="PT"
+						type="button" 
+						value="Protect My Territory" 
+						onclick="window.location.href='/ProtectMyTerritory ' " />
+			</div>
+		</td>
+		<td>
+		<div class = "SecondCol">
+		<h3> Security detector with camera to capture any intruder</h3>
+		</div>
+	</td>	
+	</tr>
+	<tr>
+		<td>
+			<div class = "FirstCol" align ="center">
+				<input class ="A"
+					type="button" 
+					value="Album" 
+					onclick="window.location.href='/Album' " />
+			</div>			
+		</td>
+	<td>
+	<div class = "SecondCol">
+	<h3>Album with photos of intruders</h3>
+	</div>
+	</td>	
+	</tr>
+
+	</table>
+	</form>
+	<br><br>
+
+	<h5> The date and time on the server is: {{ time }} </h5>
+	</body>
+	</html>
