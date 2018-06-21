@@ -1,8 +1,15 @@
 # electRuBus
 Smart Plug - IoT device using Raspberry Pi 
 
-**Electricity** + **Rubus** (the genus of flowering plants including raspberry) = **electRuBus**
+**Electricity** + **Rubus** (the genus of flowering plants including *raspberry*) = **electRuBus**
 
+Project from paper *"How many polar bears can you save with a Raspberry Pi?"*
+
+by Nefeli Zikou and Melina Zikou, 4th High School of Alexandroupolis
+
+Presented in [**A**natolia **C**ollege **S**cience and **T**echnology **A**nual **C**onference](http://www.acstac.gr/), Thessaloniki, November 2017
+ 
+___
 ## Description
 A smart Internet-of-Things (IoT) device that monitors and optimizes electrical power for room appliances and lighting, based on user presence or preferences. 
 The Smart Plug records the state and operating time of an electric outlet and the presence of a human based on infrared light sensor that can capture photos when triggered. 
@@ -11,16 +18,16 @@ The Smart Plug records the state and operating time of an electric outlet and th
    
 The device supports multiple modes of operation:
 
-  1. The "WatchMe" mode records electric outlet operation time along with human 
+  * The "WatchMe" mode records electric outlet operation time along with human 
     presence in the room and generates maps of electric consumption.
  
-  2. The “SaveTheBear” mode, the device optimizes electric consumption by turning off selected appliances 
+  * The “SaveTheBear” mode, the device optimizes electric consumption by turning off selected appliances 
     when no human is present. 
 
-  3. The "AlwaysAround" mode allows the user to remotely control 
+  * The "AlwaysAround" mode allows the user to remotely control 
      the electric outlet via the internet. 
 
-  4. The “ProtectMyTerritory” mode uses the human presence detector and the camera to 
+  * The “ProtectMyTerritory” mode uses the human presence detector and the camera to 
     notify the lawful occupant of any intruder. 
 
 ## Implementation 
